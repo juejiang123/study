@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.course">
+
+    <select id="getUserCount" resultType="Integer">
+        select count(*) from user;
+    </select>
+    
+    <insert id="addUser" parameterType="com.User">
+        insert into user(id,name,age,sex)
+        value(#{id},#{name},#{age},#{sex})
+    </insert>
+
+    <update id="updateUser" parameterType="com.User">
+        update user set name=#{name}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.String">
+        delete from user where name=#{name}
+    </delete>
+    
+<!--    <select id="getzhangsan" resultType="java.lang.String">-->
+<!--        select sex from user-->
+
+<!--    </select>-->
+</mapper>
