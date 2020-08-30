@@ -1,7 +1,9 @@
 package com.course.server;
 
 import com.course.utils.JdkSignatureUtil;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -13,12 +15,14 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 
+@RestController
 public class ServerController {
     /**
      * 公钥
      */
     private final static String PUBLIC_KEY="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJz1kfGpz7dGFZCUY/kXbvYBXZEd5Xg+S8SRRD+p2iGCeQlKJ+Fycuboe7hIr8jhyTEKpaOFN8wW5/QNXdOzDnMCAwEAAQ==";
 
+    @PostMapping(value = "/test")
     public String server(@RequestBody Map<String,Object> param) throws UnsupportedEncodingException, InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, SignatureException {
         //从参数中取出签名字符串并删除，因为sign不参与字符串拼接
         String sign = (String)param.remove("sign");
