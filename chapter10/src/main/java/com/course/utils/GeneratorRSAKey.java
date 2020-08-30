@@ -1,4 +1,4 @@
-package com.course.config;
+package com.course.utils;
 
 import lombok.extern.log4j.Log4j;
 
